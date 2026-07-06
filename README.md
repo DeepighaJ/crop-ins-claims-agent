@@ -126,4 +126,6 @@ The UI will visibly display:
 ## Threat Model & Security Considerations
 This project was built with a strict STRIDE threat model in mind (see `threat_model.md`). 
 
+**Agent Skills:** This project includes a custom-authored Antigravity skill, stride-threat-model (.agents/skills/stride-threat-model/SKILL.md), built specifically for this project rather than relying only on pre-installed ADK skills. Running this skill against the codebase produced a full six-category STRIDE assessment (see threat_model.md), including a real vulnerability discovered and fixed during development, discussed below.
+
 **Note on Prompt Injection Mitigations:** The system employs both regex-based checkpoints and defensive LLM system prompts to prevent attackers from using the claim description to hijack the `damage_analyzer`. However, prompt-level defenses are inherently not foolproof. These are *mitigations*, not 100% guarantees. The ultimate failsafe is the deterministic architectural routing that forces borderline or compromised claims to a human reviewer, preventing the LLM from ever authorizing a payout itself.
