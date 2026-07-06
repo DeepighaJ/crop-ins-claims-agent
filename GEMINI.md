@@ -59,3 +59,15 @@ Ask the user: Option A (simple single-project) or Option B (full CI/CD pipeline 
 - **Run Python with `uv`**: `uv run python script.py`. Run `agents-cli install` first.
 - **Stop on repeated errors**: If the same error appears 3+ times, fix the root cause instead of retrying.
 - **Terraform conflicts** (Error 409): Use `terraform import` instead of retrying creation.
+
+
+## Project Skills
+
+This project includes a custom skill at `.agents/skills/stride-threat-model/SKILL.md`
+that performs a systematic STRIDE threat modeling assessment. Invoke this skill:
+- Before starting a new implementation phase that touches security-relevant logic
+  (the security checkpoint, the auto-close gate, tool integrations).
+- After any change to `damage_analyzer`'s system instruction, `security_checkpoint`'s
+  regex patterns, or `auto_close_gate`'s threshold logic.
+- Whenever a new prompt injection or evidence-manipulation vector is discovered
+  during testing — re-run the skill to update `threat_model.md` with the finding.
